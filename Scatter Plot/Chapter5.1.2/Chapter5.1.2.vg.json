@@ -1,0 +1,65 @@
+# copy all codes to the Vege-Lite Online Editor to run the final visualization
+
+
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "A simple bar chart with embedded data.",
+    "data": { "url": "https://raw.githubusercontent.com/Sukiezong/Vega-LIte/main/Validation_5.1.2.csv" },
+    "title": { "text": "IMDb Sentiment Classifier Generalization", "fontSize": 15 },
+    "width": 400,
+    "height": 400,
+    "layer": [
+        { 
+            "mark": { "type": "point", "tooltip": { "content": "data" } },
+            "encoding": {
+                "x": {
+                    "field": "Accuracy on IID Data (IMDb)",
+                    "type": "quantitative",
+                    "axis": { "title": "Accuracy(%) on IID Data (IMDb)","titleFontSize":15 },
+                    "scale": {"domain":[60,100]}
+                },   
+                "y": {
+                    "field": "Accuracy on OOD Data (SST-2)",
+                    "type": "quantitative",
+                    "axis": { "title": "Accuracy(%) on OOD Data (SST-2)","titleFontSize":15 },
+                    "scale": {"domain":[60,100]}
+                },
+                "color": { "field": "Classifier", "type": "nominal" },                       
+                "fill": { "field": "Classifier", "type": "nominal" },
+                "shape": { "field": "Classifier", "type": "nominal" },
+                "size": { "value": 200 },
+                "opacity": { "value": 0.6 }
+            }
+        },
+        {
+            "mark": { "type": "rule", "color": "lightgray", "strokeDash": [8, 8] },
+            "encoding": {
+                "y": { "value": 400 },
+                "x": { "value": 0 },
+                "y2": { "value": 0 },
+                "x2": { "value": 400 }
+            }
+        },
+        {
+            "mark": {
+                "type": "text", "align": "center",
+                "baseline": "middle",
+                "dx": -45,
+                "dy": 0
+            },
+            "encoding": {
+                "x": {
+                    "field": "Accuracy on IID Data (IMDb)",
+                    "type": "quantitative",
+                    "axis": { "title": "Accuracy(%) on IID Data (IMDb)" }
+                },
+                "y": {
+                    "field": "Accuracy on OOD Data (SST-2)",
+                    "type": "quantitative",
+                    "axis": { "title": "Accuracy(%) on OOD Data (SST-2)" }
+                },
+                "text": { "field": "Classifier" }
+            }
+        }
+    ]
+}
