@@ -1,0 +1,44 @@
+# Copy all codes to the Vega-Lite Online Editor to run the final visualization
+
+
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "A simple bar chart with embedded data.",
+    "data": { "url": "https://raw.githubusercontent.com/Sukiezong/Vega-LIte/main/Validation_5.1.3new.csv" },
+    "title": { "text": "EM and F1 score using different methods ", "fontSize": 15 },
+    "width": 350,
+    "height": 100,
+    "layer": [
+        { 
+            "mark": { "type": "point", "tooltip": { "content": "data" } },
+            "encoding": {
+                "x": {
+                    "field": "F1 score",
+                    "type": "quantitative",
+                    "axis": { "title": "F1 score)","titleFontSize":15 },
+                    "scale": {"domain":[86,89.5]}
+                },   
+                "y": {
+                    "field": "Exact Match (EM)",
+                    "type": "quantitative",
+                    "axis": { "title": "Exact Match (EM)","titleFontSize":15 },
+                    "scale": {"domain":[86,87]}
+                },
+                "color": { "field": "Methods", "type": "nominal" },
+                "fill": { "field": "Methods", "type": "nominal" },
+                "shape": { "field": "Methods", "type": "nominal" },
+                "size": { "value": 200 },
+                "opacity": { "value": 0.6 }
+            }
+        },
+        {
+            "mark": { "type": "rule", "color": "lightgray", "strokeDash": [8, 8] },
+            "encoding": {
+                "y": { "value": 100 },
+                "x": { "value": 0 },
+                "y2": { "value": 0 },
+                "x2": { "value": 100 }
+            }
+        }
+    ]
+}
