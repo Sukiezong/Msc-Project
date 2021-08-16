@@ -1,0 +1,64 @@
+# Copy all codes to the Vega-Lite Online Editor to run the final visualization
+
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "A simple bar chart with embedded data.",
+    "data": { "url": "https://raw.githubusercontent.com/Sukiezong/Vega-LIte/main/Validation_5.1.1.csv" },
+    "title": { "text": "F1 score of GLMP vs Our Model on different domains", "fontSize": 15 },
+    "width": 350,
+    "height": 350,
+    "layer": [
+        { 
+            "mark": { "type": "point", "tooltip": { "content": "data" } },
+            "encoding": {
+                "x": {
+                    "field": "F1 score on Our model",
+                    "type": "quantitative",
+                    "axis": { "title": "F1 score on Our model","titleFontSize":15 }
+                },
+                
+                "y": {
+                    "field": "F1 score on GLMP model",
+                    "type": "quantitative",
+                    "axis": { "title": "F1 score on GLMP model","titleFontSize":15 },
+                    "scale": {"domain":[0,45]}
+                },
+                "color": { "field": "Domain", "type": "nominal" },
+                "fill": { "field": "Domain", "type": "nominal" },
+                "shape": { "field": "Domain", "type": "nominal" },
+                "size": { "value": 200 },
+                "opacity": { "value": 0.7 }
+            }
+        },
+        {
+            "mark": { "type": "rule", "color": "lightgray", "strokeDash": [8, 8] },
+            "encoding": {
+                "y": { "value": 350 },
+                "x": { "value": 0 },
+                "y2": { "value": 0 },
+                "x2": { "value": 350 }
+            }
+        },
+        {
+            "mark": {
+                "type": "text", "align": "center",
+                "baseline": "middle",
+                "dx": 10,
+                "dy": -17
+            },
+            "encoding": {
+                "x": {
+                    "field": "F1 score on Our model",
+                    "type": "quantitative",
+                    "axis": { "title": "F1 score on Our model" }
+                },
+                "y": {
+                    "field": "F1 score on GLMP model",
+                    "type": "quantitative",
+                    "axis": { "title": "F1 score on GLMP model" }
+                },
+                "text": { "field": "Domain" }
+            }
+        }
+    ]
+}
