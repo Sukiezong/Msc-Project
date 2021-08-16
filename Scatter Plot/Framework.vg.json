@@ -1,0 +1,80 @@
+# For performance of two models in different datasets or performance of different models in two datasets
+
+# "……" means that the user needs to manually enter information, 
+   the numbers in the code can be replaced,
+   and the size can be modified according to the generated visualization to obtain the best visualization
+
+# In the framework, there are three independent layers: point, diagonal line, text marker on each point,
+  the user could delete any layer according to different expression effects.
+
+# Scatter points with different colors and shapes
+
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",       
+    "description": "A simple scatter plot with embedded data.",
+    "data": { "url": " ……  " },                                                         // data source in CSV, JSON, TSV, DSV formats
+    "title": { "text": " …… ", "fontSize": 15 },                                       // title for plot
+    "width": 400,                                                                    
+    "height": 400,
+    "layer": [
+        { 
+            "mark": { "type": "point", "tooltip": { "content": "data" } },
+            "encoding": {
+                "x": {
+                    "field": " x_axis ",                                              
+                    "type": "quantitative",
+                    "axis": { "title": " …… ","titleFontSize":15 }                  // title for x-axis
+                },
+                "y": {
+                    "field": " y_axis ",                                                
+                    "type": "quantitative",
+                    "axis": { "title": " …… ","titleFontSize":15 }                 // title for y-axis
+                },
+                "color": { "field": "Methods", "type": "nominal" },         
+                "fill": { "field": "Methods", "type": "nominal" },
+                "shape": { "field": "Methods", "type": "nominal" },
+                "size": { "value": 200 },
+                "opacity": { "value": 0.7 }
+            }
+        },
+	{
+            "mark": { "type": "rule", "color": "lightgray", "strokeDash": [8, 8] },
+            "encoding": {
+                "y": { "value": 400 },
+                "x": { "value": 0 },
+                "y2": { "value": 0 },
+                "x2": { "value": 400 }
+            }
+        },
+	{
+            "mark": {
+                "type": "text", "align": "center",
+                "baseline": "middle",
+		"dy": -30,
+                "dy": -17
+            },
+            "encoding": {
+                "x": {
+                    "field": " x_axis ",
+                    "type": "quantitative",
+                    "axis": { "title": " …… " }                                               // title for x-axis
+                },
+                "y": {
+                    "field": " y_axis  ",
+                    "type": "quantitative",
+                    "axis": { "title": " …… " }                                              // title for y-axis
+                },
+                "text": { "field": " Methods " }                       
+            }
+        }
+    ]
+}
+
+
+# Scatter points with single color, users need to change the content of Line 25 and Line 26 as the following:
+
+"color": { "value": " blue "},                                        // example for single color
+"fill": { "value": " blue " }
+
+"color": { "value": " #FFB6C1 "},
+"fill": { "value": " #FFB6C1 " }
