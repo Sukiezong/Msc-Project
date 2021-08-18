@@ -1,0 +1,68 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "A simple stacked bar chart with embedded data.",
+    "data": { "url": " ……  " },                                                                       // data source in CSV, JSON, TSV, DSV formats
+    "transform": [
+        {
+          "joinaggregate": [{ "op": "sum", "field": "Y-axis", "as": "total" }],
+          "groupby": ["X-axis"]
+        }
+    ],
+    "width": 600,
+    "height": 400,
+    "title": { "text": " …… ", "fontSize": 20 },                                                      // title for plot
+    "encoding": {
+        "x": {
+            "field": "X-axis",
+            "type": "nominal",
+            "axis": {"title": " …… ","titleFontSize":15, "labelAngle": "0"                           // title for X-axis
+            }
+        },
+        "y": {
+            "aggregate": "sum",
+            "field": "Y-axis",
+            "type": "quantitative",
+            "axis": {"title": " …… ","titleFontSize":15},                                           // title for Y-axis
+            "stack":"zero"
+        }, 
+        "color": {
+        "field": "Methods",
+        "type": "nominal",
+        "title": " …… ",                                                                            // title for legends
+        "scale":{
+          "range": [                                                                                // Customize colors (hexadecimal color codes)
+            "#ffc048",
+            "#60a3bc",
+            "#cd6133",
+            "#aaa69d"
+          ]
+        }
+        }, 
+        "order": { "field": "Methods","sort":"descending"}
+    },
+    "layer": [
+        {
+            "mark": { "type": "bar", "tooltip": { "content": "data" }, "width": { "band": 0.7 } }
+        }, 
+
+                                                                                             // Set the horizontal auxiliary line (it can be deleted if not needed)
+        {
+            "mark": { "type": "rule", "color": "lightgreen","strokeDash": [4, 4]},
+            "encoding": {
+                "x": { "value": 0 },
+                "y": { "value": 17 },
+                "x2": { "value": 600 },
+                "y2": { "value": 17 }
+            }
+        },
+
+                                                                                          // Set the data labels in each rectangle (it can be deleted if not needed)
+        {
+            "mark": { "type": "text", "dx": 0, "dy":10, "angle": 0,"baseline":"left" },
+            "encoding": {
+                "color": { "value": "white" },
+                "text": { "field": "Y-axis", "type": "quantitative"}
+            }
+        }
+    ]
+}
