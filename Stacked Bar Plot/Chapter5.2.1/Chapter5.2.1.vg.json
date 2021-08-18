@@ -1,0 +1,57 @@
+# copy all codes to the Vega-Lite Online Editor to run the final visualization
+
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": { "url": "https://raw.githubusercontent.com/Sukiezong/Vega-LIte/main/Chapter5.2.1_dataset.csv" }, 
+    "transform": [
+        {
+          "joinaggregate": [{ "op": "sum", "field": "Y-axis", "as": "total" }],
+          "groupby": ["X-axis"]
+        }
+    ],
+    "width": 600,
+    "height": 400,
+    "title": { "text": "Doctor evaluation of amount of relevent information covered by summaries", "fontSize": 20},
+    "encoding": {
+        "x": {
+            "field": "X-axis",
+            "type": "nominal",
+            "axis": {"title": "Model variants","titleFontSize":15, "labelAngle": "0"
+            }
+        },
+        "y": {
+            "aggregate": "sum",
+            "field": "Y-axis",
+            "type": "quantitative",
+            "axis": {"title": "Percentage of examples (unit: %)","titleFontSize":15},
+            "stack":"zero"
+        }, 
+        "color": {
+        "field": "Methods",
+        "type": "nominal",
+        "title": "Word in summary",
+        "scale":{
+          "range": [
+            "#ffc048",
+            "#60a3bc",
+            "#cd6133",
+            "#aaa69d"
+          ]
+        }
+        }, 
+        "order": { "field": "Methods","sort":"descending"}
+    },
+    "layer": [
+        {
+            "mark": { "type": "bar", "tooltip": { "content": "data" }, "width": { "band": 0.7 } }
+        }, 
+        {
+            "mark": { "type": "text", "dx": 0, "dy":10, "angle": 0,"baseline":"left" },
+            "encoding": {
+                "color": { "value": "white" },
+                "text": { "field": "Y-axis", "type": "quantitative"}
+            }
+        }
+    ]
+}
+
