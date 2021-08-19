@@ -58,7 +58,7 @@
 
                                                                                           // Set the data labels in each rectangle (it can be deleted if not needed)
         {
-            "mark": { "type": "text", "dx": 0, "dy":10, "angle": 0,"baseline":"left" },
+            "mark": { "type": "text", "dx": 0, "dy":10, "angle": 0,"baseline":"left","fontSize":12 },
             "encoding": {
                 "color": { "value": "white" },
                 "text": { "field": "Y-axis", "type": "quantitative"}
