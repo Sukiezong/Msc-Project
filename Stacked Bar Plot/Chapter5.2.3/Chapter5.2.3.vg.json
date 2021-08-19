@@ -1,0 +1,81 @@
+# copy all codes to the Vega-Lite Online Editor to run the final visualization
+
+
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": { "url": "https://raw.githubusercontent.com/Sukiezong/Vega-LIte/main/Chapter5.2.3_dataset.csv" }, 
+    "transform": [
+        {
+          "joinaggregate": [{ "op": "sum", "field": "Y-axis", "as": "total" }],
+          "groupby": ["X-axis"]
+        }
+    ],
+    "width": 600,
+    "height": 400,
+    "title": { "text": "Statistics of datasets", "fontSize": 20},
+    "encoding": {
+        "x": {
+            "field": "X-axis",
+            "type": "nominal",
+            "axis": {"title": "Datasets","titleFontSize":15, "labelAngle": "0"
+            }
+        }
+    },
+    "layer": [
+        {
+            "mark": { "type": "bar", "tooltip": { "content": "data" }, "width": { "band": 0.75 } },
+            "encoding":{
+                "y": {
+                    "aggregate": "sum",
+                    "field": "Y-axis",
+                    "type": "quantitative",
+                    "axis": {"title": "The amount of datasets","titleFontSize":17},
+                    "stack":"zero"
+              }, 
+                "color": {
+                  "field": "Methods",
+                  "type": "nominal",
+                  "title": "Sentiment",
+                  "scale":{
+                  "range": [
+                    "#ffc048",
+                    "#60a3bc",
+                    "#cd6133"
+                  ]
+                  }
+                }, 
+                "order": { "field": "Methods","sort":"descending"}
+            }
+        }, 
+        {
+            "mark": { "type": "text", "dx": 0, "dy":10, "angle": 0,"baseline":"left" },
+            "encoding": {
+                "y":{
+                    "aggregate": "sum",
+                    "field": "Y-axis",
+                    "type": "quantitative",
+                    "axis": {"title": "The amount of datasets","titleFontSize":12},
+                    "stack":"zero"
+                },
+                "color": { "value": "white" },
+                "text": { "field": "Y-axis", "type": "quantitative"},
+                "order": { "field": "Methods", "sort": "descending" }
+            }
+        },
+        {
+            "mark": { "type": "text", "dx": 0, "dy": -5, "angle": 0, "baseline": "left" },
+            "encoding": {
+                "y":{
+                    "aggregate": "sum",
+                    "field": "Y-axis",
+                    "type": "quantitative",
+                    "axis": {"title": "The amount of datasets","titleFontSize":12}
+                },
+                "color": { "value": "black" },
+                "text": { "field": "total", "type": "quantitative"}
+            }
+        }
+    ]
+}
+
+
