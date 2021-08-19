@@ -48,7 +48,7 @@
             }
         }, 
         {
-            "mark": { "type": "text", "dx": 0, "dy":10, "angle": 0,"baseline":"left" },
+            "mark": { "type": "text", "dx": 0, "dy":10, "angle": 0,"baseline":"left","fontSize":13 },
             "encoding": {
                 "y":{
                     "aggregate": "sum",
@@ -63,7 +63,7 @@
             }
         },
         {
-            "mark": { "type": "text", "dx": 0, "dy": -5, "angle": 0, "baseline": "left" },
+            "mark": { "type": "text", "dx": 0, "dy": -5, "angle": 0, "baseline": "left","fontSize":15 },
             "encoding": {
                 "y":{
                     "aggregate": "sum",
